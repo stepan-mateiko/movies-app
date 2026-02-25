@@ -1,0 +1,25 @@
+@use '../../styles/variables' as *;
+
+.inputWrapper {
+	width: 100%;
+}
+
+.label {
+	display: block;
+	margin-bottom: 8px;
+	color: $color-titles;
+	text-transform: uppercase;
+}
+
+.input {
+	width: 100%;
+	padding: 12px 14px;
+	border: 1px solid transparent;
+	border-radius: 2px;
+	background-color: rgba(66, 66, 66, 0.58);
+	color: $color-text;
+
+	&::placeholder {
+		color: rgba(255, 255, 255, 0.35);
+	}
+}

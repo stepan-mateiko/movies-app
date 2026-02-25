@@ -1,0 +1,19 @@
+@mixin flex-center($direction: row, $gap: 0, $wrap: wrap) {
+	display: flex;
+	flex-direction: $direction;
+	flex-wrap: $wrap;
+	align-items: center;
+	justify-content: center;
+	gap: $gap;
+}
+
+@mixin focus-ring($color: rgba(229, 9, 20, 0.6)) {
+	outline: 3px solid $color;
+	outline-offset: 2px;
+}
+
+@mixin smooth-text {
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}

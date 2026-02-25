@@ -1,0 +1,50 @@
+@use '../../../styles/variables' as *;
+
+.form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.link {
+	color: $color-titles;
+	text-transform: capitalize;
+	width: 35%;
+	text-align: center;
+
+	a {
+		color: $color-text;
+	}
+}
+
+.buttons {
+	display: flex;
+	justify-content: flex-end;
+	gap: 20px;
+}
+
+.field {
+	position: relative;
+	margin-bottom: 1rem;
+	width: 35%;
+	> div {
+		display: flex;
+		justify-content: space-between;
+		@media (max-width: 768px) {
+			flex-direction: column;
+		}
+	}
+	input {
+		width: 60%;
+		@media (max-width: 768px) {
+			width: 100%;
+		}
+	}
+}
+
+.error {
+	color: $color-titles;
+	font-size: 0.875rem;
+	margin: 0 0 0.5rem 0;
+}

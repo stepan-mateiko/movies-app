@@ -1,0 +1,34 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.moviesListWrapper {
+	position: relative;
+	background-color: $extra-bg;
+	padding: 5%;
+}
+
+.list {
+	list-style: none;
+	padding: 0;
+	@include flex-center($gap: 20px);
+	gap: 20px;
+}
+
+.pagination {
+	margin-top: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 16px;
+}
+
+.paginationInfo {
+	margin: 0;
+}
+
+.modalButtons {
+	display: flex;
+	justify-content: flex-end;
+	gap: 12px;
+	margin-top: 18px;
+}

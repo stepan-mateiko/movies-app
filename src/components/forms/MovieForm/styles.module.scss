@@ -1,0 +1,170 @@
+@use '../../../styles/variables' as *;
+
+.container {
+	display: grid;
+	grid-template-columns: minmax(0, 2fr) minmax(0, 1.15fr);
+	gap: 10px 10px;
+	color: $color-text;
+
+	h2 {
+		grid-column: 1 / -1;
+		margin: 0 0 8px;
+		font-size: 24px;
+		font-weight: 300;
+		letter-spacing: 1.2px;
+		text-transform: uppercase;
+	}
+}
+
+.error {
+	grid-column: 1 / -1;
+	margin: 0;
+	color: $color-titles;
+	font-size: 14px;
+}
+
+.field {
+	min-width: 0;
+
+	label {
+		display: block;
+		font-weight: 600;
+		letter-spacing: 0.8px;
+		text-transform: uppercase;
+		color: $color-titles;
+	}
+
+	input,
+	select,
+	textarea {
+		width: 100%;
+		border: 1px solid transparent;
+		border-radius: 2px;
+		background-color: rgba(66, 66, 66, 0.58);
+		color: $color-text;
+		font-size: 18px;
+		line-height: 1.2;
+		padding: 14px 16px;
+
+		&::placeholder {
+			color: rgba(255, 255, 255, 0.35);
+		}
+
+		&:focus {
+			outline: none;
+			border-color: $color-titles;
+		}
+	}
+}
+
+.genreField {
+	select {
+		appearance: none;
+		padding-right: 48px;
+	}
+}
+
+.selectWrapper {
+	position: relative;
+
+	&::after {
+		content: '';
+		position: absolute;
+		right: 14px;
+		top: 50%;
+		width: 0;
+		height: 0;
+		border-left: 7px solid transparent;
+		border-right: 7px solid transparent;
+		border-top: 9px solid $color-titles;
+		transform: translateY(-30%);
+		pointer-events: none;
+	}
+}
+
+.overview {
+	grid-column: 1 / -1;
+
+	textarea {
+		resize: vertical;
+	}
+}
+
+.buttons {
+	grid-column: 1 / -1;
+	display: flex;
+	justify-content: flex-end;
+	gap: 14px;
+	margin-top: 16px;
+
+	button {
+		min-width: 184px;
+		padding: 12px 24px;
+		letter-spacing: 0.8px;
+	}
+
+	button:first-child {
+		background-color: transparent;
+		border: 1px solid $color-titles;
+		color: $color-titles;
+	}
+
+	button:last-child {
+		background-color: $color-titles;
+		border: 1px solid $color-titles;
+		color: $color-text;
+	}
+}
+
+.notification {
+	color: $color-text;
+
+	h2 {
+		margin: 0 0 10px;
+		text-transform: uppercase;
+		font-size: 44px;
+		font-weight: 300;
+	}
+
+	p {
+		margin: 0 0 24px;
+		font-size: 22px;
+	}
+
+	button {
+		display: block;
+		margin-inline-start: auto;
+		min-width: 180px;
+		padding: 10px 20px;
+	}
+}
+
+@media (max-width: 900px) {
+	.container {
+		grid-template-columns: 1fr;
+	}
+
+	.overview,
+	.buttons,
+	.error,
+	.container h2 {
+		grid-column: 1;
+	}
+
+	.field {
+		input,
+		select,
+		textarea {
+			font-size: 22px;
+		}
+	}
+
+	.buttons {
+		justify-content: stretch;
+
+		button {
+			flex: 1;
+			min-width: 0;
+		}
+	}
+}
