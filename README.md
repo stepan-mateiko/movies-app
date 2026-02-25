@@ -1,88 +1,84 @@
-# Movie App
+# 🎬 Movie App
 
-Movie catalog web app built with React, TypeScript, Vite, Redux Toolkit, and React Router.
+A role-based movie catalog application built with **React + TypeScript**.
+Users can browse movies, open details, search/filter/sort content, and (for admin role) manage movies via modals.
 
-## Features
-- User authentication (login/registration)
-- Role-based actions (`admin` can add/edit/delete movies)
-- Movies listing with search, filter, sort, and pagination
-- Movie details view
-- Modal-based movie form for create/update
-- Unit/component tests with Jest + Testing Library
+---
 
-## Tech Stack
-- React 18
-- TypeScript
-- Vite 5
-- Redux Toolkit + React Redux
-- React Router v6
-- SCSS modules
-- Jest + Testing Library
+## 🚀 Features
 
-## Requirements
-- Node.js 18+ (recommended)
-- npm 9+
-- Backend API running at `http://localhost:4000`
+### 🔐 Authentication & Authorization
+- Registration and login
+- Token-based session (`localStorage`)
+- Protected admin-only actions
+- Role-aware UI (`user` / `admin`)
 
-## Getting Started
-1. Install dependencies:
-```bash
-npm install
-```
-2. Start development server:
-```bash
-npm run dev
-```
-3. Open the app in browser (Vite default):
-`http://localhost:5173`
+### 🎞️ Movies
+- Movie list with pagination
+- Search by title
+- Filter by genre
+- Sort by release date or title
+- Detailed movie view with poster, genres, rating, runtime, and description
 
-## Available Scripts
-- `npm run dev` - start Vite dev server
-- `npm run build` - type-check and build production bundle
-- `npm run preview` - preview production build
-- `npm run lint` - run ESLint
-- `npm run test` - run all tests once
-- `npm run test:local` - run tests in watch mode
-- `npm run coverage` - run tests with coverage
+### 🛠️ Admin Actions
+- Add movie
+- Edit movie
+- Delete movie
+- Modal-based forms and confirmations
 
-## Testing
-Test setup:
-- Jest (`jsdom`)
-- `ts-jest` transform for TypeScript
-- React Testing Library + `@testing-library/jest-dom`
+### 🧪 Testing
+- Unit tests for helpers
+- Component tests for key UI flows
+- Jest + React Testing Library
 
-Run all tests:
-```bash
-npm run test
-```
+---
 
-Run a specific test file:
-```bash
-npm run test -- src/components/Header/Header.test.tsx
-```
+## 🛠 Tech Stack
 
-## Project Structure
+### Frontend
+- **React 18**
+- **TypeScript**
+- **Redux Toolkit**
+- **React Router v6**
+- **SCSS Modules**
+- **Vite**
+- **Jest + Testing Library**
+
+### Backend
+- REST API (separate service)
+- Base URL:
+  `https://movies-app-backend-qxv7.onrender.com`
+
+---
+
+## 📁 Project Structure (Simplified)
+
 ```text
 src/
-  assets/          # icons/images
-  common/          # reusable UI components (Button, Input, Modal, ...)
-  components/      # feature components (Header, MoviesList, MovieDetails, forms)
-  constants/       # app constants and text labels
-  handlers/        # pure utility/helper functions
-  services/        # API layer
-  store/           # Redux store, slices, thunks, selectors
-  styles/          # global variables and mixins
-  types/           # shared TypeScript types
+├── assets/              # icons, images
+├── common/              # shared UI components
+├── components/          # feature components
+├── constants/           # app constants and text labels
+├── handlers/            # pure utility functions
+├── services/            # API communication layer
+├── store/               # Redux store, slices, selectors, thunks
+├── styles/              # SCSS variables and mixins
+├── types/               # shared TypeScript types
+├── App.tsx              # routing and app composition
+└── main.tsx             # entry point
 ```
 
-## API Notes
+---
+
+## 🌐 API
+
 Base URL is configured in:
-- `src/services/api.ts`
+`src/services/api.ts`
 
 Current value:
-- `http://localhost:4000`
+`https://movies-app-backend-qxv7.onrender.com`
 
-Used endpoints:
+Main endpoints:
 - `GET /movies?limit=3000`
 - `POST /movies`
 - `PUT /movies/:id`
@@ -91,14 +87,66 @@ Used endpoints:
 - `POST /me/login`
 - `POST /me/user`
 
-Swagger (expected backend):
-- `http://localhost:4000/api-docs`
+Swagger:
+`https://movies-app-backend-qxv7.onrender.com/api-docs`
 
-## Authentication Flow
-- On successful login, token is stored in `localStorage`
-- App loads user data by token on startup
-- Logout removes token and redirects to login
+---
 
-## Notes
-- Absolute imports are enabled via `@/*` alias (see `tsconfig.json`).
-- Jest configuration is in `jest.config.ts` and setup in `jest.setup.ts`.
+## 📦 Installation & Setup
+
+### 1. Install dependencies
+```bash
+npm install
+```
+
+### 2. Run development server
+```bash
+npm run dev
+```
+
+### 3. Open in browser
+`http://localhost:5173`
+
+---
+
+## 📜 Scripts
+- `npm run dev` - start development server
+- `npm run build` - type-check and create production build
+- `npm run preview` - preview production build locally
+- `npm run lint` - run ESLint
+- `npm run test` - run all tests once
+- `npm run test:local` - run tests in watch mode
+- `npm run coverage` - run tests with coverage
+
+---
+
+## 🧪 Testing
+
+Run full test suite:
+```bash
+npm run test
+```
+
+Run one test file:
+```bash
+npm run test -- src/components/Header/Header.test.tsx
+```
+
+Testing setup:
+- `jest.config.ts`
+- `jest.setup.ts`
+
+---
+
+## 🧭 Routing Notes
+- Public routes: login/registration
+- Authenticated routes: movies and details
+- Admin-only routes: add/edit movie
+- Unknown routes redirect to `/movies` (or `/login` if unauthenticated)
+
+---
+
+## 📌 Notes
+- Uses absolute import alias `@/*` (configured in `tsconfig.json`)
+- Global styles are in `src/index.scss`
+- Shared SCSS variables/mixins are in `src/styles`

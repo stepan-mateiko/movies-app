@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://localhost:4000';
+export const BASE_URL = 'https://movies-app-backend-qxv7.onrender.com';
 
 export const assertOk = (res: Response, message: string) => {
 	if (!res.ok) {
