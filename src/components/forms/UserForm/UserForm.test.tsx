@@ -88,6 +88,32 @@ describe('UserForm', () => {
 			name: 'Test User',
 			email: 'test@mail.com',
 			password: 'secret',
+			role: 'user',
+		});
+		expect(navigateMock).toHaveBeenCalledWith('/login');
+	});
+
+	it('submits registration with admin role when checkbox is checked', async () => {
+		const user = userEvent.setup();
+		(createUser as jest.Mock).mockResolvedValue({});
+
+		render(
+			<MemoryRouter>
+				<UserForm mode='registration' />
+			</MemoryRouter>
+		);
+
+		await user.type(screen.getByPlaceholderText('enter name'), 'Admin User');
+		await user.type(screen.getByPlaceholderText('enter email'), 'admin@mail.com');
+		await user.type(screen.getByPlaceholderText('create password'), 'secret');
+		await user.click(screen.getByLabelText('Admin'));
+		await user.click(screen.getByRole('button', { name: /register/i }));
+
+		expect(createUser).toHaveBeenCalledWith({
+			name: 'Admin User',
+			email: 'admin@mail.com',
+			password: 'secret',
+			role: 'admin',
 		});
 		expect(navigateMock).toHaveBeenCalledWith('/login');
 	});

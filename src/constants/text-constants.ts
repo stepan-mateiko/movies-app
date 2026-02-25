@@ -82,6 +82,7 @@ export const TEXT = {
 		LABEL_EMAIL: 'Email',
 		PLACEHOLDER_EMAIL: 'enter email',
 		LABEL_PASSWORD: 'Password',
+		LABEL_ADMIN: 'Admin',
 		PLACEHOLDER_PASSWORD_LOGIN: 'enter password',
 		PLACEHOLDER_PASSWORD_REG: 'create password',
 		ERROR_NAME_REQUIRED: 'Name is required',

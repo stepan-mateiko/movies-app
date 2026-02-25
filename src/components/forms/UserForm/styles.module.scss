@@ -43,6 +43,19 @@
 	}
 }
 
+.checkboxField {
+	label {
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
+		cursor: pointer;
+	}
+
+	input[type='checkbox'] {
+		width: auto;
+	}
+}
+
 .error {
 	color: $color-titles;
 	font-size: 0.875rem;

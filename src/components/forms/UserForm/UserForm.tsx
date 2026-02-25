@@ -18,6 +18,7 @@ export const UserForm: React.FC<UserFormProps> = ({ mode }) => {
 		email: '',
 		password: '',
 	});
+	const [isAdmin, setIsAdmin] = useState(false);
 	const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
 	const handleChange = (field: keyof UserFormData, value: string) => {
@@ -27,6 +28,7 @@ export const UserForm: React.FC<UserFormProps> = ({ mode }) => {
 
 	const handleReset = () => {
 		setFormData({ name: '', email: '', password: '' });
+		setIsAdmin(false);
 		setErrors({});
 	};
 
@@ -45,7 +47,12 @@ export const UserForm: React.FC<UserFormProps> = ({ mode }) => {
 				await dispatch(loginUserThunk({ email: formData.email!, password: formData.password! })).unwrap();
 				navigate('/movies');
 			} else {
-				await createUser({ name: formData.name!, email: formData.email!, password: formData.password! });
+				await createUser({
+					name: formData.name!,
+					email: formData.email!,
+					password: formData.password!,
+					role: isAdmin ? 'admin' : 'user',
+				});
 				navigate('/login');
 			}
 		} catch (err: any) {
@@ -91,6 +98,20 @@ export const UserForm: React.FC<UserFormProps> = ({ mode }) => {
 				/>
 				{errors.password && <p className={styles.error}>{errors.password}</p>}
 			</div>
+
+			{mode === 'registration' && (
+				<div className={`${styles.field} ${styles.checkboxField}`}>
+					<label htmlFor='is-admin'>
+						<input
+							id='is-admin'
+							type='checkbox'
+							checked={isAdmin}
+							onChange={(e) => setIsAdmin(e.target.checked)}
+						/>
+						{TEXT.USER_FORM.LABEL_ADMIN}
+					</label>
+				</div>
+			)}
 
 			<div className={styles.link}>
 				{mode === 'login' ? (

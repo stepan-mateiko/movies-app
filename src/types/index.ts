@@ -28,6 +28,7 @@ export declare interface RegistrationData {
 	name: string;
 	email: string;
 	password: string;
+	role: 'user' | 'admin';
 }
 
 export declare interface PrivateRouteProps {
